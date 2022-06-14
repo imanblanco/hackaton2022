@@ -21,6 +21,7 @@ from drf_yasg import openapi
 from project import settings
 from django.conf.urls.static import static
 
+
 schema_view = get_schema_view(
    openapi.Info(
       title="AuthProject API",
@@ -38,4 +39,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('applications.user.urls')),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-]
+    path('product/', include('applications.product.urls')),
+    path('order/', include('applications.order.urls')),
+    path('category/', include('applications.category.urls')),
+    path('review/', include('applications.review.urls')),
+    path('comment/', include('applications.comment.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
