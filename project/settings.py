@@ -35,16 +35,22 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 
     # libs
     'rest_framework',
     'rest_framework.authtoken',
     'drf_yasg',
     'django_filters',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
     # applications
     'applications.user',
@@ -53,6 +59,7 @@ INSTALLED_APPS = [
     'applications.order',
     'applications.review',
     'applications.comment',
+    'applications.oauth',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +77,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/ 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -101,6 +108,25 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'user.User'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+    'SCOPE' : [
+        'profile',
+        'email',
+    ],
+    'AUTH_PARAMS' : {
+        'access_type': 'online',
+    }
+
+  }
+}
+SITE_ID = 3
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Password validation
