@@ -17,7 +17,7 @@ class RegistrationView(APIView):
         serializer = RegistrationSerializer(data=data)
         if serializer.is_valid(raise_exception=True):
             serializer.create(serializer.validated_data)
-            return Response("Successfully signed up!", status=201)
+            return Response("Successfully registered!", status=201)
 
 
 class ActivationView(APIView):
