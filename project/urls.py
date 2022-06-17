@@ -40,14 +40,12 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('applications.user.urls')),
-    path('swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('product/', include('applications.product.urls')),
     path('order/', include('applications.order.urls')),
     path('category/', include('applications.category.urls')),
     path('review/', include('applications.review.urls')),
     path('comment/', include('applications.comment.urls')),
-    path('', TemplateView.as_view(template_name = 'index.html')),
-    path('accounts/', include('allauth.urls')),
     path('logout/', LogoutView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

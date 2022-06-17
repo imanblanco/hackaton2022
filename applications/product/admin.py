@@ -15,6 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [InLineProductImage,]
     list_display = ('title', 'in_stock', 'price', 'image')
     list_filter = ('category',)
+    search_fields = ['title']
 
     def image(self, obj):
         img = obj.images.first()
