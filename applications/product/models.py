@@ -13,7 +13,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='Product')
     in_stock = models.BooleanField(default=True,)
     quantity = models.PositiveIntegerField(default=1)
-    logo = models.ImageField(blank=True, null=True, upload_to='images')
+    picture = models.ImageField(blank=True, null=True, upload_to='images')
 
     def __str__(self):
         return self.title

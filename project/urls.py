@@ -20,6 +20,8 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from project import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
+from django.contrib.auth.views import LogoutView
 
 
 schema_view = get_schema_view(
@@ -44,5 +46,6 @@ urlpatterns = [
     path('category/', include('applications.category.urls')),
     path('review/', include('applications.review.urls')),
     path('comment/', include('applications.comment.urls')),
+    path('logout/', LogoutView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+
     # libs
     'rest_framework',
     'rest_framework.authtoken',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'applications.order',
     'applications.review',
     'applications.comment',
+
 ]
 
 MIDDLEWARE = [
@@ -139,7 +141,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL = 'images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -162,5 +164,5 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend'
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 3,
+    'PAGE_SIZE': 2,
 }
